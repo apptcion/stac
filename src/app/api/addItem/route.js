@@ -2,11 +2,11 @@ import formidable from 'formidable';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
-export const config = {
-  api: {
-    bodyParser: false, // Next.js에서 bodyParser를 비활성화합니다.
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false, // Next.js에서 bodyParser를 비활성화합니다.
+//   },
+// };
 
 export async function POST(req, res) {
   try {
