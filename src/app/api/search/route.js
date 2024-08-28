@@ -13,7 +13,7 @@ export async function GET(req) {
 
   // keyword가 없는 경우 예외 처리
   if (!keyword) {
-    return NextResponse.json({ error: 'Keyword is required' }, { status: 400 });
+    keyword = ''
   }
 
   // 초성 추출
