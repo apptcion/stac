@@ -9,7 +9,7 @@ export async function GET(req) {
 
   // req 객체에서 URL을 생성하고, 쿼리 파라미터를 추출
   const { searchParams } = new URL(req.url);
-  const keyword = searchParams.get('keyword');
+  let keyword = searchParams.get('keyword');
 
   // keyword가 없는 경우 예외 처리
   if (!keyword) {
