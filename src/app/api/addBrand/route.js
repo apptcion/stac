@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import dbConnect from '../../../db/mongoDB'
 import brands from '../../../db/brand'
 
-dbConnect()
+await dbConnect()
 
 export async function POST(req, res){
 
@@ -29,7 +29,7 @@ export async function POST(req, res){
     console.log(brand_name, brand_type,tel,email,productUrl1,productUrl2)
     return NextResponse.json({
         data : {
-            msg : "good"
+            success : true
         }
     })
 }
