@@ -11,7 +11,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req, res) {
   try {
     
-    return new Promise((resolve, reject) => {33
+    return new Promise((resolve, reject) => {
       const form = formidable({
         uploadDir: path.join(process.cwd(), '/public/imgs'),
         keepExtensions: true,
