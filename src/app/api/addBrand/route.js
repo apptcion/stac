@@ -23,7 +23,7 @@ export async function POST(req, res){
             return new Response(
                 JSON.stringify({
                     success : false
-                }), {status : 500}
+                }), {status : 500, headers}
             )
         }else{
             await brands.create({
@@ -48,6 +48,6 @@ export async function POST(req, res){
         return new Response(
             JSON.stringify({
                 success : false
-            }), {status : 500}
+            }), {status : 500, headers}
         )
     }}
