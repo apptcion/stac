@@ -15,15 +15,23 @@ export async function POST(req, res){
     const {username, tel, sendMail, personal} = data;
 
     try{
+
+        console.log(data)
+        let test = await users.find()
+        console.log(test)
+        console.log(tel)
+
         let exist = await users.find({tel})
-        if(exist){
+        console.log(exist)
+        if(exist.length != 0){
+            console.log("Fail")
             return new Response(
                 JSON.stringify({
                     success : false
                 }), {status : 500, headers}
             )
         }else{
-
+            console.log("Success")
             await users.create({
                 username,
                 tel,
@@ -38,6 +46,7 @@ export async function POST(req, res){
             )
         }
     }catch(except){
+        console.log("Error")
         return new Response(
             JSON.stringify({
                 success : false

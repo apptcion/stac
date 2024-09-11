@@ -19,7 +19,7 @@ export async function POST(req, res){
     try { 
 
         const brand = await brands.find({brand_name})
-        if(brand){
+        if(brand.length != 0){
             return new Response(
                 JSON.stringify({
                     success : false
