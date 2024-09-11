@@ -17,16 +17,26 @@ export async function POST(req, res){
     const {brand_name, brand_type, tel, email, productUrl1, productUrl2, sendMail, personal} = data;
 
     try { 
-        await brands.create({
-            brand_name,
-            brand_type,
-            tel,
-            email,
-            productUrl1,
-            productUrl2,
-            sendMail,
-            personal
-        })
+
+        const brand = await brands.find({brand_name})
+        if(brand){
+            return new Response(
+                JSON.stringify({
+                    success : false
+                }), {status : 500}
+            )
+        }else{
+            await brands.create({
+                brand_name,
+                brand_type,
+                tel,
+                email,
+                productUrl1,
+                productUrl2,
+                sendMail,
+                personal
+            })
+        }
              
         return new Response(
             JSON.stringify({
