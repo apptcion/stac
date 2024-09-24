@@ -44,7 +44,7 @@ export async function POST(req, res){
         console.log(`이름 : ${brand_name}, 종류 : ${brand_type}, 전화번호 : ${tel}`);
         return new Response(
             JSON.stringify({
-                success : true
+                success : true,
                 msg : '등록 성공.! 감사합니다 :)'
             }),{status : 200, headers}
         )

@@ -15,7 +15,6 @@ export async function POST(req, res){
     const {username, tel, sendMail, personal} = data;
 
     try{
-        let test = await users.find()
 
         let exist = await users.find({tel})
         if(exist.length != 0){
