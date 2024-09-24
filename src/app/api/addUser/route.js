@@ -15,42 +15,44 @@ export async function POST(req, res){
     const {username, tel, sendMail, personal} = data;
 
     try{
-
-        console.log(data)
         let test = await users.find()
-        console.log(test)
-        console.log(tel)
 
         let exist = await users.find({tel})
-        console.log(exist)
         if(exist.length != 0){
-            console.log("Fail")
+            console.log("사용자등록이 거부됨. 사유 - 존재하는 사용자 : ");
+            console.log(`Exist : ${exist}`)
+            console.log(`Tried : 이름 : ${username} 전화 : ${tel} 이메일 수신 동의 : ${sendMail} 개인정보처리 : ${personal}`)
             return new Response(
                 JSON.stringify({
-                    success : false
-                }), {status : 500, headers}
+                    success : false,
+                    msg : '존재하는 사용자입니다.'
+                }), {status : 200, headers}
             )
         }else{
-            console.log("Success")
             await users.create({
                 username,
                 tel,
                 sendMail,
                 personal
             })
-
+            
+            console.log(`새 사용자 등록됨.`)
+            console.log(`이름 : ${username} 전화 : ${tel} 이메일 수신 동의 : ${sendMail} 개인정보처리 : ${personal}`)
             return new Response(
                 JSON.stringify({
-                    success : true
+                    success : true,
+                    msg : '사용자 등록에 성공하였습니다.'
                 }), {status : 200, headers}
             )
         }
     }catch(except){
-        console.log("Error")
+        console.error("사용자 등록 처리중 에러 발생")
+        console.log(`이름 : ${username} 전화 : ${tel} 이메일 수신 동의 : ${sendMail} 개인정보처리 : ${personal}`)
         return new Response(
             JSON.stringify({
-                success : false
-            }), {status : 500, headers}
+                success : false,
+                msg : '사용자 등록에 실패했습니다. 관리자에게 문의해주세요 :('
+            }), {status : 200, headers}
         )
     }
 

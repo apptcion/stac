@@ -20,9 +20,12 @@ export async function POST(req, res){
 
         const brand = await brands.find({brand_name})
         if(brand.length != 0){
+            console.log('브랜드 등록 거절됨. 사유 : 존재하는 브랜드 이름')
+            console.log(`Brandname : ${brand_name}`)
             return new Response(
                 JSON.stringify({
-                    success : false
+                    success : false,
+                    msg : "존재하는 브랜드 이름"
                 }), {status : 500, headers}
             )
         }else{
@@ -37,17 +40,22 @@ export async function POST(req, res){
                 personal
             })
         }
-             
+        console.log(`새 브랜드 등록됨.`)
+        console.log(`이름 : ${brand_name}, 종류 : ${brand_type}, 전화번호 : ${tel}`);
         return new Response(
             JSON.stringify({
                 success : true
+                msg : '등록 성공.! 감사합니다 :)'
             }),{status : 200, headers}
         )
     
     } catch (error) {
+        console.error('브랜드 등록 처리 중 Error 발생. ')
+        console.error(`브랜드 이름 : ${brand_name}`);
         return new Response(
             JSON.stringify({
-                success : false
+                success : false,
+                msg : "등록 실패. 관리자에게 연락해주세요 :("
             }), {status : 500, headers}
         )
     }}
