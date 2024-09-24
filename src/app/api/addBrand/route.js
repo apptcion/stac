@@ -26,7 +26,7 @@ export async function POST(req, res){
                 JSON.stringify({
                     success : false,
                     msg : "존재하는 브랜드 이름"
-                }), {status : 500, headers}
+                }), {status : 200, headers}
             )
         }else{
             await brands.create({
@@ -56,6 +56,6 @@ export async function POST(req, res){
             JSON.stringify({
                 success : false,
                 msg : "등록 실패. 관리자에게 연락해주세요 :("
-            }), {status : 500, headers}
+            }), {status : 200, headers}
         )
     }}
