@@ -28,11 +28,12 @@ export async function POST(req, res){
                 }), {status : 200, headers}
             )
         }else{
+            console.log(personal)
             await users.create({
                 username,
                 tel,
                 sendMail,
-                personal
+                personal : personal
             })
             
             console.log(`새 사용자 등록됨.`)

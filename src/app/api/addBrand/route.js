@@ -31,7 +31,7 @@ export async function POST(req, res){
         }else{
             await brands.create({
                 brand_name,
-                brand_type,
+                brand_type: brand_type,
                 tel,
                 email,
                 productUrl1,
