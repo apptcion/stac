@@ -29,6 +29,7 @@ export async function GET(req) {
   // 쿼리 실행
   let result;
   if (regexChoseong) {
+    console.log("한국어로 검색됨")
     result = await products.find({
       $or: [
         { product_name: { $regex: regexKeyword } },
@@ -38,6 +39,7 @@ export async function GET(req) {
       ],
     });
   } else {
+    console.log("영어로 검색됨")
     result = await products.find({
       $or: [
         { product_name: { $regex: regexKeyword } },
