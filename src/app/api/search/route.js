@@ -16,6 +16,12 @@ export async function GET(req) {
     keyword = ''
   }
 
+  
+  keyword = keyword.split('[')[0]
+  keyword = keyword.split('(')[0]
+  keyword = keyword.split(']')[0]
+  keyword = keyword.split(')')[0]
+
   // 초성 추출
   const choseong = getChoseong(keyword);
 
