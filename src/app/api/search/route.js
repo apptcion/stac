@@ -28,7 +28,7 @@ export async function GET(req) {
 
   // 쿼리 실행
   let result;
-  if (regexChoseong) {
+  if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(keyword)) {
     console.log("한국어로 검색됨")
     result = await products.find({
       $or: [
